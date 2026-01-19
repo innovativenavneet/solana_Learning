@@ -1,0 +1,5 @@
+1.create a public private key pair 
+2.define a message to sign 
+3.convert message to UInt8Array 
+4.sign the message using privat key 
+5.verify the message using pubic key  
