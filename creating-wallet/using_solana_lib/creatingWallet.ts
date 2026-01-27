@@ -1,16 +1,16 @@
-import { Keypair } from "@solana/web3.js";
+import { Keypair, LAMPORTS_PER_SOL } from "@solana/web3.js";
 // the nacl library is a lightweight library for ed25519 cryptography.
 import nacl from "tweetnacl";
 // The bs58 library provides simple functions to encode binary data (typically as a Buffer or Uint8Array in JavaScript) into
 import bs58 from "bs58";
 
-//this key pair will generate a random public and private key pair 
+//this key pair will generate a random public and private key pair
 const keypair = Keypair.generate();
-console.log("keypair", keypair);
+// console.log("keypair", keypair);
 
 // Public key as base58 string (for display)
 const publicKeyBase58 = keypair.publicKey.toBase58();
-console.log("public key (base58):", publicKeyBase58);
+// console.log("public key (base58):", publicKeyBase58);
 
 // Public key as raw bytes (for nacl verification)
 const publicKeyBytes = keypair.publicKey.toBytes();
@@ -21,7 +21,7 @@ console.log("public key (string):", publicKeyStrings);
 // Convert to base58 for display
 const privateKeyBase58 = bs58.encode(keypair.secretKey);
 // console.log("private key (base58):", privateKeyBase58);
-// console.log("private key (raw bytes):", keypair.secretKey);
+console.log("private key (raw bytes):", keypair.secretKey);
 
 const message = new TextEncoder().encode("hey i am navneet");
 const message2 = new TextEncoder().encode("hey i am navnee");
@@ -33,11 +33,6 @@ console.log("signature:", signature);
 const result = nacl.sign.detached.verify(message2, signature, publicKeyBytes);
 console.log("verification result:", result);
 
-
-
-
-
-
-
-
-
+console.log("smallerst unt in solana", LAMPORTS_PER_SOL);
+// 1Sol = 10^9 lamports
+//this is giving me the out of 1000000000
